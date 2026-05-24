@@ -1,0 +1,8 @@
+@use "./base/reset";
+@use "./base/container";
+@use "./base/variables"; // Додали "s" в кінці, тепер компілятор його знайде!
+@use "./base/common";
+@use "./section/header";
+@use "./section/hero";
+@use "./section/modal";
+@use "./section/footer";
