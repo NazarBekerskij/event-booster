@@ -86,8 +86,18 @@ button {
 }
 .header__logo-img {
   display: block;
-  width: 280px;
+  width: 180px;
   height: auto;
+}
+@media screen and (min-width: 768px) {
+  .header__logo-img {
+    width: 302px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .header__logo-img {
+    width: 402px;
+  }
 }
 
 .hero-wrapper {
@@ -103,18 +113,34 @@ button {
 .hero__title {
   color: #DC56C5;
   text-align: center;
-  font-family: Montserrat;
-  font-size: 50px;
-  font-style: normal;
-  font-weight: 900;
-  line-height: normal;
+  font-family: Montserrat, sans-serif;
   text-transform: uppercase;
+  font-weight: 900;
+  font-size: 18px;
+}
+@media screen and (min-width: 768px) {
+  .hero__title {
+    font-size: 30px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .hero__title {
+    font-size: 50px;
+  }
 }
 .hero__search {
   margin-top: 52px;
   display: flex;
-  justify-content: center;
-  gap: 50px;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+@media screen and (min-width: 768px) {
+  .hero__search {
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+  }
 }
 .hero__search-icon {
   width: 12px;
@@ -136,7 +162,7 @@ button {
   padding: 12px 30px;
 }
 .searching-input::-moz-placeholder {
-  color: #493838;
+  color: rgba(85, 66, 66, 0.5058823529);
   font-family: Montserrat;
   font-size: 16px;
   font-style: normal;
@@ -144,7 +170,7 @@ button {
   line-height: normal;
 }
 .searching-input::placeholder {
-  color: #493838;
+  color: rgba(85, 66, 66, 0.5058823529);
   font-family: Montserrat;
   font-size: 16px;
   font-style: normal;
@@ -163,5 +189,29 @@ button {
   border: none;
   outline: none;
   cursor: pointer;
-  color: #493838;
+  color: rgba(85, 66, 66, 0.5058823529);
+}
+
+.footer {
+  padding-top: 180px;
+  padding-bottom: 20px;
+}
+.footer__text {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  color: #939393;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+@media screen and (min-width: 768px) {
+  .footer__text {
+    font-size: 16px;
+  }
+}
+.footer__span {
+  color: red;
 }/*# sourceMappingURL=main.css.map */
