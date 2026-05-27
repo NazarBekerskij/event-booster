@@ -100,13 +100,6 @@ button {
   }
 }
 
-.hero-wrapper {
-  background-image: url("../img/pic.png");
-  background-size: cover;
-  background-position: center;
-  padding-bottom: 133px;
-}
-
 .hero {
   padding-top: 40px;
 }
@@ -190,6 +183,19 @@ button {
   outline: none;
   cursor: pointer;
   color: rgba(85, 66, 66, 0.5058823529);
+}
+
+.header__page {
+  pointer-events: none;
+}
+
+.header__link {
+  pointer-events: auto;
+}
+
+.events {
+  padding-top: 133px;
+  padding-bottom: 60px;
 }
 
 .footer {
