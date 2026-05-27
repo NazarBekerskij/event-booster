@@ -26,9 +26,9 @@
 }
 
 &__logo-img {
-  display: block; // Завжди залишай блок, щоб не було зайвих відступів
-  width: 180px;   // Базовий розмір для мобільного
-  height: auto;   // <--- ЦЕ КЛЮЧОВИЙ МОМЕНТ!
+  display: block; 
+  width: 180px;   
+  height: auto;   
 
   @media screen and (min-width: 768px) {
     width: 302px;

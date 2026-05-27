@@ -1,10 +1,9 @@
 @use "../base/variables" as *;
 
 .hero-wrapper {
-  background-image: url('../img/pic.png');
-  background-size: cover;
-  background-position: center;
-  padding-bottom: 133px;
+  // background-image: url('../img/pic.png');
+  // background-size: cover;
+  // background-position: center;
   
 }
 
@@ -89,3 +88,10 @@ line-height: normal;
   color: #55424281;
 }
 
+.header__page {
+  pointer-events: none;
+}
+
+.header__link {
+  pointer-events: auto;
+}
