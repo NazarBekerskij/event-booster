@@ -86,22 +86,27 @@ button {
 }
 .header__logo-img {
   display: block;
-  width: 180px;
+  width: 130px;
   height: auto;
 }
 @media screen and (min-width: 768px) {
   .header__logo-img {
-    width: 302px;
+    width: 225px;
   }
 }
 @media screen and (min-width: 1024px) {
   .header__logo-img {
-    width: 402px;
+    width: 300px;
   }
 }
 
 .hero {
   padding-top: 40px;
+  padding-bottom: 200px;
+  background-image: url("../img/pic.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .hero__title {
   color: #DC56C5;
@@ -194,12 +199,65 @@ button {
 }
 
 .events {
-  padding-top: 133px;
   padding-bottom: 60px;
+}
+.events__list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 56px;
+}
+
+.event-card__image {
+  display: block;
+  width: 180px;
+  height: 227px;
+  border-radius: 50px 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.event-card {
+  width: 196px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+}
+
+.event-card__title {
+  color: #DC56C5;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.event-card__date {
+  color: #fff;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.event-card__place {
+  color: #fff;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
 .footer {
-  padding-top: 180px;
+  background-color: #000000;
+  padding-top: 80px;
   padding-bottom: 20px;
 }
 .footer__text {

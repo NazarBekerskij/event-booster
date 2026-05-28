@@ -4,7 +4,8 @@
 @use "../base/variables" as *;
 
 .footer {
-  padding-top: 180px;
+  background-color: #000000;
+  padding-top: 80px;
   padding-bottom: 20px; 
 
   &__text {
