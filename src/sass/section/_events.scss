@@ -1,6 +1,66 @@
-// @use "../base/variables" as *;
+@use "../base/variables" as *;
 
 .events {
-  padding-top: 133px;
+  // background-color: #000000d2;
   padding-bottom: 60px;
+
+  &__list{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 56px;
+  }
+  
 }
+.event-card__image {
+  display: block;
+  width: 180px;
+  height: 227px;
+  border-radius: 50px 0;
+  object-fit: cover;
+}
+
+.event-card {
+  width: 196px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+}
+
+.event-card__title{
+color: #DC56C5;
+text-align: center;
+font-family: Montserrat;
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+
+.event-card__date{
+color: #fff;
+text-align: center;
+font-family: Montserrat;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.event-card__place{
+color: #fff;
+text-align: center;
+font-family: Montserrat;
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+
+}
+
+
+// .events__container {
+//   margin-top: -50px;
+// }

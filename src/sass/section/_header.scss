@@ -1,5 +1,9 @@
 @use "../base/variables" as *;
 
+
+
+
+
 .header{
 &__page {
   position: absolute; 
@@ -27,16 +31,16 @@
 
 &__logo-img {
   display: block; 
-  width: 180px;   
+  width: 130px;   
   height: auto;   
 
   @media screen and (min-width: 768px) {
-    width: 302px;
+    width: 225px;
     
   }
 
   @media screen and (min-width: 1024px) {
-    width: 402px;
+    width: 300px;
   }
 }
 }

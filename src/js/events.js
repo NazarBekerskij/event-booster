@@ -2,9 +2,7 @@ import { getEvents } from "./api.js";
 
 const eventsList = document.querySelector(".events__list");
 
-
-
-getEvents().then(res => console.log(res))
+getEvents().then(res => console.log(res));
 
 function createEventsMarkup(array) {
   return array.map(({ name, images, dates, _embedded }) => {
