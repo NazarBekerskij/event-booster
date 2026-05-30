@@ -1,7 +1,9 @@
 @use "../base/variables" as *;
 
 .events {
-  background-color: #000000d2;
+  // background-color: #000000d2;
+  background: rgba(11, 11, 11, 0.993);
+
   padding-bottom: 60px;
 
   &__list{
