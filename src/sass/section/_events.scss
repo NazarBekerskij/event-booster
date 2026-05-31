@@ -6,28 +6,56 @@
 
   padding-bottom: 60px;
 
-  &__list{
+ &__list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 56px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+
+    @media screen and (min-width: 624px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 27px;
+    }
+
+    @media screen and (min-width: 1080px) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 70px;
+    }
   }
   
 }
 .event-card__image {
   display: block;
-  width: 180px;
-  height: 227px;
+  width: 128px;
+  height: 161px;
   border-radius: 50px 0;
   object-fit: cover;
+
+  @media screen and (min-width: 624px) {
+    width: 180px;
+    height: 227px;
+  }
+
+  @media screen and (min-width: 1080px) {
+  width: 180px;
+  height: 227px;
+}
 }
 
 .event-card {
-  width: 196px;
+  width: 128px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 5px;
   text-align: center;
+
+  @media screen and (min-width: 624px) {
+    width: 180px;
+  }
+
+  @media screen and (min-width: 1080px) {
+    width: 196px;
+  }
 }
 
 .event-card__title{
