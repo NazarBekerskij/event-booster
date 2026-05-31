@@ -47,6 +47,7 @@ button {
   max-width: 1080px;
   margin: 0 auto;
   padding: 0 15px;
+  outline: 1px solid rgb(255, 0, 0);
 }
 @media screen and (min-width: 300px) {
   .container {
@@ -180,9 +181,9 @@ button {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   padding: 12px 30px;
-  -moz-appearance: none;
-       appearance: none;
   -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   border: none;
   outline: none;
   cursor: pointer;
@@ -203,26 +204,60 @@ button {
 }
 .events__list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 56px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+@media screen and (min-width: 624px) {
+  .events__list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 27px;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .events__list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 70px;
+  }
 }
 
 .event-card__image {
   display: block;
-  width: 180px;
-  height: 227px;
+  width: 128px;
+  height: 161px;
   border-radius: 50px 0;
   -o-object-fit: cover;
      object-fit: cover;
 }
+@media screen and (min-width: 624px) {
+  .event-card__image {
+    width: 180px;
+    height: 227px;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .event-card__image {
+    width: 180px;
+    height: 227px;
+  }
+}
 
 .event-card {
-  width: 196px;
+  width: 128px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 5px;
   text-align: center;
+}
+@media screen and (min-width: 624px) {
+  .event-card {
+    width: 180px;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .event-card {
+    width: 196px;
+  }
 }
 
 .event-card__title {
@@ -285,7 +320,7 @@ button {
 }
 
 .footer {
-  background-color: #000000;
+  background: rgba(11, 11, 11, 0.993);
   padding-top: 80px;
   padding-bottom: 20px;
 }
