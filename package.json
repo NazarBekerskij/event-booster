@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "basiclightbox": "^5.0.4",
     "body": "^5.1.0",
     "body-scroll-lock": "^4.0.0-beta.0",
     "skroll": "^1.4.3",
