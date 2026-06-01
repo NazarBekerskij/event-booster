@@ -319,6 +319,13 @@ button {
   color: #fff;
 }
 
+.modal {
+  width: 930px;
+  height: 1023px;
+  border-radius: 300px 0;
+  background: #FFF2FD;
+}
+
 .footer {
   background: rgba(11, 11, 11, 0.993);
   padding-top: 80px;
