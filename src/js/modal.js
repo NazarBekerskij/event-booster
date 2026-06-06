@@ -7,16 +7,7 @@ eventsList.addEventListener("click", (e) => {
   const item = e.target.closest(".events__item");
   if (!item) return;
 
-  // Витягуємо всі дані, які підготували в головному файлі
-  const { name, date, venue, city, image, standard, vip, info } = item.dataset;
-
-  // Розумний фолбек: якщо з сервера немає окремої VIP ціни, робимо її вдвічі більшою за стандартну
-  let displayVip = vip;
-  if (!vip || vip === 'N/A') {
-    displayVip = standard && standard !== 'N/A' 
-      ? standard.replace(/\d+/g, (match) => parseInt(match) * 2) 
-      : 'N/A';
-  }
+  const { name, date, venue, city, image, info } = item.dataset;
 
   const instance = basicLightbox.create(`
     <div class="modal">
@@ -61,12 +52,12 @@ eventsList.addEventListener("click", (e) => {
             <span class="modal__label">PRICES</span>
             
             <div class="modal__price-row">
-              <p class="modal__text"><span class="modal__barcode">║▌║█║▌│║</span> Standart ${standard}</p>
+              <p class="modal__text"><span class="modal__barcode">║▌║█║▌│║</span> Standart Price</p>
               <button class="modal__btn" type="button">BUY TICKETS</button>
             </div>
 
             <div class="modal__price-row">
-              <p class="modal__text"><span class="modal__barcode">║▌║█║▌│║</span> VIP ${displayVip}</p>
+              <p class="modal__text"><span class="modal__barcode">║▌║█║▌│║</span> VIP Price</p>
               <button class="modal__btn" type="button">BUY TICKETS</button>
             </div>
           </div>
@@ -82,7 +73,18 @@ eventsList.addEventListener("click", (e) => {
 
   instance.show();
 
-  // Обробник події для кнопки закриття
+
+  
+  function onEscKeyPress (event) {
+    if(event.code === 'Escape'){
+      instance.close()
+    }
+  }
+  window.addEventListener('keydown', onEscKeyPress)
+
+
+
+
   const closeBtn = instance.element().querySelector('.modal__close-btn');
   closeBtn.addEventListener('click', () => instance.close());
 });
