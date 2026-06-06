@@ -158,7 +158,7 @@ button {
   border-radius: 20px;
   background: rgba(221, 218, 218, 0.2);
   backdrop-filter: blur(10px);
-  padding: 12px 30px;
+  padding: 12px 25px;
 }
 .searching-input::-moz-placeholder {
   color: #d8cbcb;
@@ -182,9 +182,6 @@ button {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   padding: 12px 30px;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
   border: none;
   outline: none;
   cursor: pointer;
