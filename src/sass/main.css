@@ -317,6 +317,28 @@ button {
   color: #fff;
 }
 
+.events__not-found {
+  grid-column: 1/-1;
+  width: 100%;
+  text-align: center;
+  padding: 60px 0;
+  font-family: inherit;
+  font-size: 24px;
+  font-weight: 600;
+  color: #dc56c5;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .basicLightbox {
   background: rgba(0, 0, 0, 0.8) !important;
   padding: 15px;
