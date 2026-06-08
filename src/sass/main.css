@@ -159,22 +159,15 @@ button {
   background: rgba(221, 218, 218, 0.2);
   backdrop-filter: blur(10px);
   padding: 12px 25px;
+  color: #ffffff;
 }
 .searching-input::-moz-placeholder {
   color: #d8cbcb;
-  font-family: Montserrat;
   font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }
 .searching-input::placeholder {
   color: #d8cbcb;
-  font-family: Montserrat;
   font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }
 
 .country-select {
@@ -182,6 +175,9 @@ button {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   padding: 12px 30px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   border: none;
   outline: none;
   cursor: pointer;
@@ -194,6 +190,43 @@ button {
 
 .header__link {
   pointer-events: auto;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 40px;
+}
+.pagination button {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.pagination button:hover {
+  color: #DC56C5;
+}
+.pagination button.active {
+  color: #DC56C5;
+  border: 2px solid #DC56C5;
+  border-radius: 6px 16px 6px 16px;
+  font-weight: bold;
+}
+.pagination .dots {
+  color: #ffffff;
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  padding: 8px 5px;
+  cursor: default;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .events {

@@ -56,3 +56,5 @@ export function renderEventsPage(page = 0, keyword = searchState.keyword, countr
 }
 
 renderEventsPage();
+
+
