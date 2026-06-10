@@ -31,16 +31,16 @@
 
 &__logo-img {
   display: block; 
-  width: 130px;   
+  width: 100px;   
   height: auto;   
 
   @media screen and (min-width: 768px) {
-    width: 225px;
+    width: 200px;
     
   }
 
   @media screen and (min-width: 1024px) {
-    width: 300px;
+    width: 215px;
   }
 }
 }
