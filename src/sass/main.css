@@ -219,27 +219,6 @@ button {
   }
 }
 
-.event-card__image {
-  display: block;
-  width: 128px;
-  height: 161px;
-  border-radius: 50px 0;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-@media screen and (min-width: 624px) {
-  .event-card__image {
-    width: 180px;
-    height: 227px;
-  }
-}
-@media screen and (min-width: 1080px) {
-  .event-card__image {
-    width: 180px;
-    height: 227px;
-  }
-}
-
 .event-card {
   width: 128px;
   display: flex;
@@ -258,35 +237,37 @@ button {
     width: 196px;
   }
 }
-
-.event-card__title {
-  color: #DC56C5;
-  text-align: center;
-  font-family: Montserrat;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
+.event-card__image {
+  display: block;
+  width: 128px;
+  height: 161px;
+  border-radius: 50px 0;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-
+@media screen and (min-width: 624px) {
+  .event-card__image {
+    width: 180px;
+    height: 227px;
+  }
+}
+.event-card__title {
+  color: #dc56c5;
+  -family: Montserrat;
+  font-size: 16px;
+  font-weight: 700;
+}
 .event-card__date {
   color: #fff;
-  text-align: center;
   font-family: Montserrat;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
 }
-
 .event-card__place {
   color: #fff;
-  text-align: center;
   font-family: Montserrat;
   font-size: 14px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
 }
 
 .pagination {
@@ -294,28 +275,34 @@ button {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-top: 80px;
+  margin-top: 60px;
+  flex-wrap: wrap;
 }
-
-.pagination__btn {
-  width: 30px;
-  height: 30px;
-  padding: 0;
+.pagination button {
+  width: 35px;
+  height: 35px;
   border: none;
   background-color: transparent;
   color: #fff;
+  font-family: Montserrat, sans-serif;
   font-size: 16px;
   cursor: pointer;
+  border-radius: 8px 0;
+  transition: all 0.2s ease;
 }
-
-.pagination__btn--active {
-  border: 1px solid #dc56c5;
-  border-radius: 10px 0;
+.pagination button:hover {
   color: #dc56c5;
+  background-color: rgba(220, 86, 197, 0.1);
 }
-
-.pagination__dots {
+.pagination button.active {
+  border: 1px solid #dc56c5;
+  color: #dc56c5;
+  font-weight: 700;
+}
+.pagination .dots {
   color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
 }
 
 .events__not-found {
@@ -323,23 +310,12 @@ button {
   width: 100%;
   text-align: center;
   padding: 60px 0;
-  font-family: inherit;
+  font-family: Montserrat;
   font-size: 24px;
   font-weight: 600;
   color: #dc56c5;
-  animation: fadeIn 0.3s ease-in-out;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 .basicLightbox {
   background: rgba(0, 0, 0, 0.8) !important;
   padding: 15px;
