@@ -1,12 +1,10 @@
 @use "../base/variables" as *;
 
 .events {
-  // background-color: #000000d2;
   background: rgba(11, 11, 11, 0.993);
-
   padding-bottom: 60px;
 
- &__list {
+  &__list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
@@ -21,24 +19,6 @@
       gap: 70px;
     }
   }
-  
-}
-.event-card__image {
-  display: block;
-  width: 128px;
-  height: 161px;
-  border-radius: 50px 0;
-  object-fit: cover;
-
-  @media screen and (min-width: 624px) {
-    width: 180px;
-    height: 227px;
-  }
-
-  @media screen and (min-width: 1080px) {
-  width: 180px;
-  height: 227px;
-}
 }
 
 .event-card {
@@ -49,107 +29,87 @@
   gap: 5px;
   text-align: center;
 
-  @media screen and (min-width: 624px) {
-    width: 180px;
+  @media screen and (min-width: 624px) { width: 180px; }
+  @media screen and (min-width: 1080px) { width: 196px; }
+
+  &__image {
+    display: block;
+    width: 128px;
+    height: 161px;
+    border-radius: 50px 0;
+    object-fit: cover;
+    @media screen and (min-width: 624px) { width: 180px; height: 227px; }
   }
 
-  @media screen and (min-width: 1080px) {
-    width: 196px;
-  }
-}
+  &__title { 
+    color: #dc56c5; 
+    -family: Montserrat;
+     font-size: 16px;
+      font-weight: 700; }
 
-.event-card__title{
-color: #DC56C5;
-text-align: center;
-font-family: Montserrat;
-font-size: 16px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-}
-
-
-.event-card__date{
-color: #fff;
-text-align: center;
-font-family: Montserrat;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-}
-
-.event-card__place{
-color: #fff;
-text-align: center;
-font-family: Montserrat;
-font-size: 14px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-
+  &__date {
+     color: #fff;
+      font-family:
+       Montserrat;
+        font-size: 16px;
+         font-weight: 400; 
+        }
+  &__place { 
+    color: #fff;
+     font-family:
+      Montserrat;
+       font-size:
+        14px; font-weight: 600; }
 }
 
 
-// .events__container {
-//   margin-top: -50px;
-// }
 
-
-.pagination{
+.pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-top: 80px;
+  margin-top: 60px;
+  flex-wrap: wrap; 
+
+  button {
+    width: 35px;
+    height: 35px;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px 0; 
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: #dc56c5;
+      background-color: rgba(220, 86, 197, 0.1);
+    }
+
+    &.active {
+      border: 1px solid #dc56c5;
+      color: #dc56c5;
+      font-weight: 700;
+    }
+  }
+
+  .dots {
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+  }
 }
-
-
-.pagination__btn{
-width: 30.0px;
-height: 30.0px;
-padding: 0;
-border: none;
-background-color: transparent;
-color: #fff;
-font-size: 16px;
-cursor: pointer;
-}
-
-
-.pagination__btn--active {
-  border: 1px solid #dc56c5;
-  border-radius: 10px 0;
-  color: #dc56c5;;
-}
-
-.pagination__dots{
-  color: #fff;
-}
-
 
 .events__not-found {
-  // Розтягуємо на всю ширину сітки (Grid / Flexbox)
   grid-column: 1 / -1; 
   width: 100%;
-  
-  // Центруємо текст
   text-align: center;
-  
-  // Робимо красиві відступи зверху і знизу
   padding: 60px 0;
-  
-  // Стиль тексту (підлаштуй кольори під свій дизайн)
-  font-family: inherit;
+  font-family: Montserrat;
   font-size: 24px;
   font-weight: 600;
-  color: #dc56c5; // Твій рожевий/пурпуровий колір з макета
-  
-  // Можна додати легку анімацію появи
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  color: #dc56c5;
 }
