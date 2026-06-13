@@ -1,22 +1,22 @@
-import{b}from"./assets/vendor-1795e137.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const c of t.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&s(c)}).observe(document,{childList:!0,subtree:!0});function n(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function s(e){if(e.ep)return;e.ep=!0;const t=n(e);fetch(e.href,t)}})();const w="https://app.ticketmaster.com/discovery/v2/events.json",L="EVDOv2DA0yM2nfxqUJW4oSne0yWf70dD";async function S(a=0,o="",n=""){return await(await fetch(`${w}?apikey=${L}&size=20&countryCode=${n}&page=${a}&keyword=${o}`)).json()}const x=document.querySelector(".events__list");x.addEventListener("click",a=>{const o=a.target.closest(".events__item");if(!o)return;const{name:n,date:s,venue:e,city:t,image:c,info:_}=o.dataset,r=b.create(`
+import{b as y}from"./assets/vendor-1795e137.js";(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))s(t);new MutationObserver(t=>{for(const a of t)if(a.type==="childList")for(const i of a.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&s(i)}).observe(document,{childList:!0,subtree:!0});function n(t){const a={};return t.integrity&&(a.integrity=t.integrity),t.referrerPolicy&&(a.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?a.credentials="include":t.crossOrigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function s(t){if(t.ep)return;t.ep=!0;const a=n(t);fetch(t.href,a)}})();const b="https://app.ticketmaster.com/discovery/v2/events.json",g="EVDOv2DA0yM2nfxqUJW4oSne0yWf70dD";async function h(o=0,e="",n=""){return await(await fetch(`${b}?apikey=${g}&size=20&countryCode=${n}&page=${o}&keyword=${e}`)).json()}const $=document.querySelector(".events__list");$.addEventListener("click",o=>{const e=o.target.closest(".events__item");if(!e)return;const{name:n,date:s,venue:t,city:a,image:i,info:p}=e.dataset,r=y.create(`
     <div class="modal">
       <button class="modal__close-btn" type="button">×</button>
       
       <div class="modal__avatar-wrap">
-        <img class="modal__avatar-img" src="${c}" alt="${n}" />
+        <img class="modal__avatar-img" src="${i}" alt="${n}" />
       </div>
 
       <div class="modal__container">
         
         <div class="modal__poster-wrap">
-          <img class="modal__poster" src="${c}" alt="${n}" />
+          <img class="modal__poster" src="${i}" alt="${n}" />
         </div>
 
         <div class="modal__content">
           
           <div class="modal__group modal__group--info">
             <span class="modal__label">INFO</span>
-            <p class="modal__text modal__text--description">${_}</p>
+            <p class="modal__text modal__text--description">${p}</p>
           </div>
 
           <h2 class="modal__title">${n}</h2>
@@ -29,7 +29,7 @@ import{b}from"./assets/vendor-1795e137.js";(function(){const o=document.createEl
 
           <div class="modal__group">
             <span class="modal__label">WHERE</span>
-            <p class="modal__text">${t}, ${e}</p>
+            <p class="modal__text">${a}, ${t}</p>
           </div>
 
           <div class="modal__group">
@@ -58,21 +58,21 @@ import{b}from"./assets/vendor-1795e137.js";(function(){const o=document.createEl
       </div>
 
     </div>
-  `);r.show();function i(d){d.code==="Escape"&&r.close()}window.addEventListener("keydown",i),r.element().querySelector(".modal__close-btn").addEventListener("click",()=>r.close())});const g=document.querySelector(".events__list"),u=document.querySelector(".pagination"),l={keyword:"",country:""};function O(a){return a.map(({id:o,name:n,images:s,dates:e,_embedded:t,info:c,description:_})=>{var i,m,d,v,f,y,h;const r=c||_||"No description available.";return`
+  `);r.show();function f(v){v.code==="Escape"&&r.close()}window.addEventListener("keydown",f),r.element().querySelector(".modal__close-btn").addEventListener("click",()=>r.close())});const c=document.querySelector(".events__list"),u=document.querySelector(".pagination"),d={keyword:"",country:""};function E(o){return o.map(e=>{const n=e.info||e.description||"No description available.";let s="Unknown",t="Unknown";return e._embedded&&e._embedded.venues&&e._embedded.venues[0]&&(s=e._embedded.venues[0].name||"Unknown",e._embedded.venues[0].city&&(t=e._embedded.venues[0].city.name||"Unknown")),`
       <li class="events__item" 
-        data-name="${n}"
-        data-date="${e.start.localDate}"
-        data-venue="${((m=(i=t==null?void 0:t.venues)==null?void 0:i[0])==null?void 0:m.name)||"Unknown"}"
-        data-city="${((f=(v=(d=t==null?void 0:t.venues)==null?void 0:d[0])==null?void 0:v.city)==null?void 0:f.name)||"Unknown"}"
-        data-image="${s[0].url}"
-        data-info="${r}"
+        data-name="${e.name}"
+        data-date="${e.dates.start.localDate}"
+        data-venue="${s}"
+        data-city="${t}"
+        data-image="${e.images[0].url}"
+        data-info="${n}"
       >
         <article class="event-card">
-          <img class="event-card__image" src="${s[0].url}" alt="${n}" />
-          <h2 class="event-card__title">${n}</h2>
-          <p class="event-card__date">${e.start.localDate}</p>
-          <p class="event-card__place">${((h=(y=t==null?void 0:t.venues)==null?void 0:y[0])==null?void 0:h.name)||"Unknown"}</p>
+          <img class="event-card__image" src="${e.images[0].url}" alt="${e.name}" />
+          <h2 class="event-card__title">${e.name}</h2>
+          <p class="event-card__date">${e.dates.start.localDate}</p>
+          <p class="event-card__place">${s}</p>
         </article>
       </li>
-    `}).join("")}function k(a,o){u.innerHTML="";const n=Math.min(a,30);if(n<=1)return;const s=[];if(o<3){const e=Math.min(n-1,4);for(let t=0;t<=e;t++)s.push(t);n>5&&(s.push("..."),s.push(n-1))}else if(o>=n-3){s.push(0),s.push("...");for(let e=n-5;e<n;e++)e>0&&s.push(e)}else{s.push(0),s.push("...");for(let e=o-1;e<=o+1;e++)s.push(e);s.push("..."),s.push(n-1)}s.forEach(e=>{if(e==="..."){const t=document.createElement("span");t.className="dots",t.textContent="...",u.appendChild(t)}else{const t=document.createElement("button");t.type="button",t.textContent=e+1,e===o&&t.classList.add("active"),t.addEventListener("click",()=>{p(e)}),u.appendChild(t)}})}function p(a=0,o=l.keyword,n=l.country){l.keyword=o,l.country=n,S(a,l.keyword,l.country).then(s=>{var c;if(!s._embedded||!s._embedded.events){g.innerHTML="<p class='events__not-found'>Nothing found! Try another search.</p>",u.innerHTML="";return}const e=s._embedded.events;g.innerHTML=O(e);const t=((c=s.page)==null?void 0:c.totalPages)||0;k(t,a)}).catch(s=>{console.error("Помилка завантаження даних:",s)})}p();const $=document.querySelector(".searching-input"),E=document.querySelector(".country-select");$&&$.addEventListener("input",a=>{const o=a.target.value.trim();p(0,o,void 0)});E&&E.addEventListener("change",a=>{const o=a.target.value;p(0,void 0,o)});
+    `}).join("")}function L(o,e){u.innerHTML="";const n=Math.min(o,30);if(n<=1)return;let s=e-2;s<0&&(s=0);let t=s+4;t>=n&&(t=n-1,s=Math.max(0,t-4));for(let a=s;a<=t;a++){const i=document.createElement("button");i.type="button",i.textContent=a+1,a===e&&i.classList.add("active"),i.addEventListener("click",()=>{l(a)}),u.appendChild(i)}}function l(o,e,n){o===void 0&&(o=0),e===void 0&&(e=d.keyword),n===void 0&&(n=d.country),d.keyword=e,d.country=n,c.classList.add("is-swapping"),h(o,d.keyword,d.country).then(s=>{setTimeout(()=>{if(!s._embedded||!s._embedded.events){c.innerHTML="<p class='events__not-found'>Nothing found! Try another search.</p>",u.innerHTML="",c.classList.remove("is-swapping");return}const t=s._embedded.events;c.innerHTML=E(t);const a=s.page.totalPages||0;L(a,o),c.classList.remove("is-swapping")},150)}).catch(s=>{console.error("Помилка завантаження даних:",s),c.classList.remove("is-swapping")})}l();const m=document.querySelector(".searching-input"),_=document.querySelector(".country-select");m&&m.addEventListener("input",o=>{const e=o.target.value.trim();l(0,e,void 0)});_&&_.addEventListener("change",o=>{const e=o.target.value;l(0,void 0,e)});
 //# sourceMappingURL=commonHelpers.js.map
