@@ -2,9 +2,23 @@
 
 
 .basicLightbox {
-  background: rgba(0, 0, 0, 0.8) !important;
+  background: rgba(0, 0, 0, 0.6) !important; 
   padding: 15px;
+  
+
+  opacity: 0;
+  backdrop-filter: blur(0px); 
+  
+  transition: opacity 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
 }
+
+.basicLightbox--visible {
+  opacity: 1;
+  backdrop-filter: blur(5px); 
+}
+
+
+
 
 .modal {
   position: relative;
@@ -17,13 +31,24 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  
 
   border-top-left-radius: 80px;
   border-bottom-right-radius: 80px;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
+
+  transform: translateY(40px) scale(0.9);
+  opacity: 0;
+  
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.35s ease;
 }
+
+.basicLightbox--visible .modal {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+
 
 
 .modal__close-btn {
@@ -38,8 +63,12 @@
   cursor: pointer;
   padding: 0;
   z-index: 5;
-}
+  transition: transform 0.2s ease;
 
+  &:hover {
+    transform: scale(1.1);
+  }
+}
 
 .modal__avatar-wrap {
   width: 80px;
@@ -55,7 +84,6 @@
   height: 100%;
   object-fit: cover;
 }
-
 
 .modal__poster-wrap {
   display: none;
@@ -73,7 +101,6 @@
   text-align: left;
 }
 
-
 .modal__title {
   display: none; 
 }
@@ -82,7 +109,6 @@
   display: flex;
   flex-direction: column;
 }
-
 
 .modal__label {
   color: #ff00ff; 
@@ -110,7 +136,6 @@
   color: #666;
 }
 
-
 .modal__price-row {
   display: flex;
   flex-direction: column;
@@ -126,7 +151,6 @@
   letter-spacing: -1px;
   color: #000;
 }
-
 
 .modal__btn {
   background-color: #4c00ff;
@@ -146,7 +170,6 @@
   }
 }
 
-/* Нижня кнопка автора */
 .modal__author-wrap {
   display: flex;
   justify-content: center;
@@ -173,6 +196,7 @@
 
 
 
+
 @media screen and (min-width: 624px) {
   .modal {
     max-width: 590px; 
@@ -192,7 +216,6 @@
     height: 90px;
     margin-bottom: 30px;
   }
-
  
   .modal__container {
     display: flex;
@@ -236,7 +259,6 @@
     padding: 10px 30px;
   }
 }
-
 
 @media screen and (min-width: 1080px) {
   .modal {
