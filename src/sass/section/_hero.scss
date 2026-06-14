@@ -9,7 +9,6 @@
   background-position: center;
   min-height: 50vh;
 
-
   &__title {
     color: #dc56c5;
     text-align: center;
@@ -19,6 +18,9 @@
     line-height: 1.25;
     font-size: 18px;
     text-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+
+   
+    animation: fadeAndSlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 
     @media screen and (min-width: 768px) {
       font-size: 30px;
@@ -36,6 +38,10 @@
     align-items: center;
     gap: 20px;
 
+    
+    animation: fadeAndSlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    opacity: 0;
+
     @media screen and (min-width: 768px) {
       flex-direction: row;
       justify-content: center;
@@ -50,12 +56,25 @@
     right: 22px;
     top: 50%;
     transform: translateY(-50%);
-    opacity: 0.8;
+    opacity: 0.6;
+    pointer-events: none; 
+    
+    
+    transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
   }
 }
 
 .search-wrapper {
   position: relative;
+
+  
+  &:focus-within {
+    .hero__search-icon {
+      opacity: 1;
+      transform: translateY(-50%) scale(1.15); 
+      filter: drop-shadow(0 0 5px #dc56c5); 
+    }
+  }
 }
 
 .searching-input,
@@ -63,19 +82,27 @@
   width: 240px;
   height: 42px;
   border-radius: 20px;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   outline: none;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   color: #ffffff;
   font-family: Montserrat, sans-serif;
   font-size: 16px;
-  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  
+
+  transition: 
+    background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 
   &:hover,
   &:focus {
-    background: rgba(255, 255, 255, 0.28);
-    box-shadow: 0 0 0 2px rgba(220, 86, 197, 0.45);
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(220, 86, 197, 0.6);
+    box-shadow: 0 0 15px rgba(220, 86, 197, 0.3);
+    transform: translateY(-2px); 
   }
 }
 
@@ -84,6 +111,11 @@
 
   &::placeholder {
     color: #d8cbcb;
+    transition: opacity 0.3s ease;
+  }
+
+  &:focus::placeholder {
+    opacity: 0;
   }
 }
 
@@ -92,4 +124,20 @@
   appearance: none;
   cursor: pointer;
   color: #d8cbcb;
+
+  option {
+    background: #111111;
+    color: #ffffff;
+  }
+}
+
+@keyframes fadeAndSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); 
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

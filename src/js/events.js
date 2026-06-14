@@ -13,15 +13,10 @@ function createEventsMarkup(array) {
   return array.map((event) => {
     const eventInfo = event.info || event.description || "No description available.";
     
-    let venueName = "Unknown";
-    let cityName = "Unknown";
+    const venueName = event._embedded?.venues?.[0]?.name ?? "Unknown";
+    const cityName = event._embedded?.venues?.[0]?.city?.name ?? "Unknown";
 
-    if (event._embedded && event._embedded.venues && event._embedded.venues[0]) {
-      venueName = event._embedded.venues[0].name || "Unknown";
-      if (event._embedded.venues[0].city) {
-        cityName = event._embedded.venues[0].city.name || "Unknown";
-      }
-    }
+    const authorLink = event._embedded?.attractions?.[0]?.url ?? "#";
 
     return `
       <li class="events__item" 
@@ -31,6 +26,8 @@ function createEventsMarkup(array) {
         data-city="${cityName}"
         data-image="${event.images[0].url}"
         data-info="${eventInfo}"
+        data-url="${event.url}"
+        data-author-url="${authorLink}" 
       >
         <article class="event-card">
           <img class="event-card__image" src="${event.images[0].url}" alt="${event.name}" />
@@ -111,3 +108,6 @@ export function renderEventsPage(page, keyword, countryCode) {
 }
 
 renderEventsPage();
+
+
+getEvents().then(res => console.log(res))

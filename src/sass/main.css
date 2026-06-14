@@ -1,4 +1,3 @@
-@charset "UTF-8";
 a {
   text-decoration: none;
 }
@@ -118,6 +117,7 @@ button {
   line-height: 1.25;
   font-size: 18px;
   text-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+  animation: fadeAndSlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 @media screen and (min-width: 768px) {
   .hero__title {
@@ -135,6 +135,8 @@ button {
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  animation: fadeAndSlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  opacity: 0;
 }
 @media screen and (min-width: 768px) {
   .hero__search {
@@ -150,11 +152,18 @@ button {
   right: 22px;
   top: 50%;
   transform: translateY(-50%);
-  opacity: 0.8;
+  opacity: 0.6;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
 }
 
 .search-wrapper {
   position: relative;
+}
+.search-wrapper:focus-within .hero__search-icon {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.15);
+  filter: drop-shadow(0 0 5px #dc56c5);
 }
 
 .searching-input,
@@ -162,20 +171,22 @@ button {
   width: 240px;
   height: 42px;
   border-radius: 20px;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   outline: none;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   color: #ffffff;
   font-family: Montserrat, sans-serif;
   font-size: 16px;
-  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .searching-input:hover, .searching-input:focus,
 .country-select:hover,
 .country-select:focus {
-  background: rgba(255, 255, 255, 0.28);
-  box-shadow: 0 0 0 2px rgba(220, 86, 197, 0.45);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(220, 86, 197, 0.6);
+  box-shadow: 0 0 15px rgba(220, 86, 197, 0.3);
+  transform: translateY(-2px);
 }
 
 .searching-input {
@@ -183,9 +194,18 @@ button {
 }
 .searching-input::-moz-placeholder {
   color: #d8cbcb;
+  -moz-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 .searching-input::placeholder {
   color: #d8cbcb;
+  transition: opacity 0.3s ease;
+}
+.searching-input:focus::-moz-placeholder {
+  opacity: 0;
+}
+.searching-input:focus::placeholder {
+  opacity: 0;
 }
 
 .country-select {
@@ -196,7 +216,21 @@ button {
   cursor: pointer;
   color: #d8cbcb;
 }
+.country-select option {
+  background: #111111;
+  color: #ffffff;
+}
 
+@keyframes fadeAndSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .events {
   background: rgba(11, 11, 11, 0.993);
   padding-bottom: 60px;
@@ -205,6 +239,11 @@ button {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 14px;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.events__list.is-swapping {
+  opacity: 0;
+  transform: translateY(10px);
 }
 @media screen and (min-width: 624px) {
   .events__list {
@@ -226,6 +265,12 @@ button {
   align-items: center;
   gap: 5px;
   text-align: center;
+  border-radius: 50px 0;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: fadeInCards 0.5s ease forwards;
 }
 @media screen and (min-width: 624px) {
   .event-card {
@@ -237,6 +282,20 @@ button {
     width: 196px;
   }
 }
+.event-card:hover {
+  transform: scale(1.03);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(220, 86, 197, 0.6);
+  box-shadow: 0 0 20px rgba(220, 86, 197, 0.2), 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+.event-card:hover .event-card__title {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(220, 86, 197, 0.8);
+}
+.event-card:hover .event-card__image {
+  transform: scale(1.06);
+  filter: saturate(1.2) brightness(1.1);
+}
 .event-card__image {
   display: block;
   width: 128px;
@@ -244,6 +303,8 @@ button {
   border-radius: 50px 0;
   -o-object-fit: cover;
      object-fit: cover;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
 }
 @media screen and (min-width: 624px) {
   .event-card__image {
@@ -253,23 +314,36 @@ button {
 }
 .event-card__title {
   color: #dc56c5;
-  -family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 700;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 .event-card__date {
   color: #fff;
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 400;
+  opacity: 0.9;
 }
 .event-card__place {
   color: #fff;
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 600;
+  opacity: 0.7;
 }
 
+@keyframes fadeInCards {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .pagination {
   display: flex;
   justify-content: center;
@@ -288,16 +362,19 @@ button {
   font-size: 16px;
   cursor: pointer;
   border-radius: 8px 0;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
-.pagination button:hover {
+.pagination button:hover:not(.active) {
   color: #dc56c5;
   background-color: rgba(220, 86, 197, 0.1);
+  transform: translateY(-2px);
 }
 .pagination button.active {
   border: 1px solid #dc56c5;
   color: #dc56c5;
   font-weight: 700;
+  transform: scale(1.2);
+  box-shadow: 0 4px 10px rgba(220, 86, 197, 0.4);
 }
 .pagination .dots {
   color: #fff;
@@ -310,15 +387,23 @@ button {
   width: 100%;
   text-align: center;
   padding: 60px 0;
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-size: 24px;
   font-weight: 600;
   color: #dc56c5;
 }
 
 .basicLightbox {
-  background: rgba(0, 0, 0, 0.8) !important;
+  background: rgba(0, 0, 0, 0.6) !important;
   padding: 15px;
+  opacity: 0;
+  backdrop-filter: blur(0px);
+  transition: opacity 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+}
+
+.basicLightbox--visible {
+  opacity: 1;
+  backdrop-filter: blur(5px);
 }
 
 .modal {
@@ -336,6 +421,14 @@ button {
   border-bottom-right-radius: 80px;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
+  transform: translateY(40px) scale(0.9);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.35s ease;
+}
+
+.basicLightbox--visible .modal {
+  transform: translateY(0) scale(1);
+  opacity: 1;
 }
 
 .modal__close-btn {
@@ -350,6 +443,10 @@ button {
   cursor: pointer;
   padding: 0;
   z-index: 5;
+  transition: transform 0.2s ease;
+}
+.modal__close-btn:hover {
+  transform: scale(1.1);
 }
 
 .modal__avatar-wrap {
@@ -451,7 +548,6 @@ button {
   background-color: #3700b3;
 }
 
-/* Нижня кнопка автора */
 .modal__author-wrap {
   display: flex;
   justify-content: center;

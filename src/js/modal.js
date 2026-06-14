@@ -7,7 +7,11 @@ eventsList.addEventListener("click", (e) => {
   const item = e.target.closest(".events__item");
   if (!item) return;
 
-  const { name, date, venue, city, image, info } = item.dataset;
+  const { name, date, venue, city, image, info, url, authorUrl } = item.dataset;
+
+  const eventLink = url || "#"
+  const authorFinalLink = authorUrl || "#"
+
 
   const instance = basicLightbox.create(`
     <div class="modal">
@@ -48,24 +52,22 @@ eventsList.addEventListener("click", (e) => {
             <p class="modal__text">${name}</p>
           </div>
 
-          <div class="modal__group">
+        <div class="modal__group">
             <span class="modal__label">PRICES</span>
-            
             <div class="modal__price-row">
-              <p class="modal__text"><span class="modal__barcode">║▌║█║▌│║</span> Standart Price</p>
-              <button class="modal__btn" type="button">BUY TICKETS</button>
+              <p class="modal__text"><span class="modal__barcode">║▌║█║▌│║</span> Standart 300-500 UAH</p>
+              <a class="modal__btn" href="${eventLink}" target="_blank" rel="noopener noreferrer">BUY TICKETS</a>
             </div>
-
             <div class="modal__price-row">
-              <p class="modal__text"><span class="modal__barcode">║▌║█║▌│║</span> VIP Price</p>
-              <button class="modal__btn" type="button">BUY TICKETS</button>
+              <p class="modal__text"><span class="modal__barcode">║▌║█║▌│║</span> VIP 1000-1500 UAH</p>
+              <a class="modal__btn" href="${eventLink}" target="_blank" rel="noopener noreferrer">BUY TICKETS</a>
             </div>
           </div>
         </div>
       </div>
 
       <div class="modal__author-wrap">
-        <button class="modal__author-btn" type="button">MORE FROM THIS AUTHOR</button>
+       <a class="modal__author-btn" href="${authorUrl}" target="_blank" rel="noopener noreferrer">MORE FROM THIS AUTHOR</a>
       </div>
 
     </div>
