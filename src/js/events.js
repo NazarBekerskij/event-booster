@@ -17,6 +17,7 @@ function createEventsMarkup(array) {
     const cityName = event._embedded?.venues?.[0]?.city?.name ?? "Unknown";
 
     const authorLink = event._embedded?.attractions?.[0]?.url ?? "#";
+    const eventImage = event.images?.[0]?.url ?? "";
 
     return `
       <li class="events__item" 
@@ -24,13 +25,13 @@ function createEventsMarkup(array) {
         data-date="${event.dates.start.localDate}"
         data-venue="${venueName}"
         data-city="${cityName}"
-        data-image="${event.images[0].url}"
+        data-image="${eventImage}"
         data-info="${eventInfo}"
         data-url="${event.url}"
         data-author-url="${authorLink}" 
       >
         <article class="event-card">
-          <img class="event-card__image" src="${event.images[0].url}" alt="${event.name}" />
+          <img class="event-card__image" src="${eventImage}" alt="${event.name}" />
           <h2 class="event-card__title">${event.name}</h2>
           <p class="event-card__date">${event.dates.start.localDate}</p>
           <p class="event-card__place">${venueName}</p>
@@ -108,6 +109,3 @@ export function renderEventsPage(page, keyword, countryCode) {
 }
 
 renderEventsPage();
-
-
-getEvents().then(res => console.log(res))
