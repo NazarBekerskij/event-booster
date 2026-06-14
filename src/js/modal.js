@@ -7,11 +7,19 @@ eventsList.addEventListener("click", (e) => {
   const item = e.target.closest(".events__item");
   if (!item) return;
 
-  const { name, date, venue, city, image, info, url, authorUrl } = item.dataset;
+  const { 
+    name = "Event", 
+    date = "Date not available", 
+    venue = "Unknown Venue", 
+    city = "Unknown City", 
+    image = "", 
+    info = "No description available.", 
+    url = "#", 
+    authorUrl = "#" 
+  } = item.dataset;
 
-  const eventLink = url || "#"
-  const authorFinalLink = authorUrl || "#"
-
+  const eventLink = url || "#";
+  const authorFinalLink = authorUrl || "#";
 
   const instance = basicLightbox.create(`
     <div class="modal">
@@ -52,7 +60,7 @@ eventsList.addEventListener("click", (e) => {
             <p class="modal__text">${name}</p>
           </div>
 
-        <div class="modal__group">
+          <div class="modal__group">
             <span class="modal__label">PRICES</span>
             <div class="modal__price-row">
               <p class="modal__text"><span class="modal__barcode">║▌║█║▌│║</span> Standart 300-500 UAH</p>
@@ -67,7 +75,7 @@ eventsList.addEventListener("click", (e) => {
       </div>
 
       <div class="modal__author-wrap">
-       <a class="modal__author-btn" href="${authorUrl}" target="_blank" rel="noopener noreferrer">MORE FROM THIS AUTHOR</a>
+        <a class="modal__author-btn" href="${authorFinalLink}" target="_blank" rel="noopener noreferrer">MORE FROM THIS AUTHOR</a>
       </div>
 
     </div>
@@ -75,18 +83,17 @@ eventsList.addEventListener("click", (e) => {
 
   instance.show();
 
-
-  
-  function onEscKeyPress (event) {
-    if(event.code === 'Escape'){
-      instance.close()
+  function onEscKeyPress(event) {
+    if (event.code === 'Escape') {
+      instance.close();
+      window.removeEventListener('keydown', onEscKeyPress); 
     }
   }
-  window.addEventListener('keydown', onEscKeyPress)
-
-
-
+  window.addEventListener('keydown', onEscKeyPress);
 
   const closeBtn = instance.element().querySelector('.modal__close-btn');
-  closeBtn.addEventListener('click', () => instance.close());
+  closeBtn.addEventListener('click', () => {
+    instance.close();
+    window.removeEventListener('keydown', onEscKeyPress);
+  });
 });
